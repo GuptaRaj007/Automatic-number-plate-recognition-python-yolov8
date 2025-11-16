@@ -18,30 +18,20 @@ A robust Automatic Number Plate Recognition (ANPR) system that detects vehicles,
 
 automatic-number-plate-recognition-python-yolov8/
 │
-├── 📄 main.py                 # Main detection and tracking script
-├── 📄 util.py                 # Utility functions for OCR and CSV writing
-├── 📄 visualize.py            # Visualization script for results
-├── 📄 add_missing_data.py     # Interpolation for missing frames
-├── 📄 requirements.txt        # Python dependencies
-├── 📄 .gitignore             # Git ignore rules
-├── 📄 README.md              # Project documentation
+├── main.py # Main detection and tracking
+├── util.py # OCR and utility functions
+├── visualize.py # Results visualization
+├── add_missing_data.py # Frame interpolation
+├── requirements.txt # Python dependencies
+├── README.md # Documentation
 │
-├── 📁 models/                 # Directory for model files
-│   ├── 📄 __init__.py        # (Optional) Make it a Python package
-│   ├── 📄 license_plate_detector.pt  # (User downloads separately)
-│   └── 📄 yolov8n.pt         # (User downloads separately)
+├── models/ # Model files (download separately)
+│ ├── license_plate_detector.pt
+│ └── yolov8n.pt
 │
-├── 📁 sort/                   # SORT tracking algorithm
-│   ├── 📄 __init__.py
-│   ├── 📄 sort.py
-│   └── 📄 ... (other SORT files)
-│
-├── 📁 assets/                 # (Optional) For sample images/videos
-│   └── 📄 sample_output.jpg   # Screenshot of results
-│
-└── 📁 scripts/                # (Optional) Helper scripts
-    └── 📄 setup.py           # Installation helper
-
+└── sort/ # SORT tracker (clone separately)
+├── sort.py
+└── init.py
 text
 
 ## 🛠️ Installation
@@ -232,6 +222,7 @@ Email - guptaaraj007@gmail.com
 Project Link: https://github.com/GuptaRaj007/automatic-number-plate-recognition-python-yolov8
 
 Note: This project is intended for educational and research purposes. Please ensure compliance with local laws and regulations when using ANPR systems.
+
 
 
 
