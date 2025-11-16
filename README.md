@@ -16,24 +16,19 @@ A robust Automatic Number Plate Recognition (ANPR) system that detects vehicles,
 - **Data Interpolation**: Handles missing frames with interpolation
 - **Visualization**: Generates annotated video with bounding boxes and text
 
+## 📁 Project Structure
 automatic-number-plate-recognition-python-yolov8/
-|
-│
-├── main.py                      # Main detection and tracking script
-├── util.py                      # OCR utilities and helper functions
-├── visualize.py                 # Visualization utilities
-├── add_missing_data.py          # Frame interpolation module
-├── requirements.txt             # Python dependencies
-├── README.md                    # Documentation
-│
-├── models/                      # Pre-trained model files (place .pt files here)
-│   ├── license_plate_detector.pt
-│   └── yolov8n.pt
-│
-└── sort/                        # SORT tracker module
-    ├── sort.py
-    └── __init__.py
+├── main.py # Main detection and tracking script
+├── util.py # Utility functions for OCR and CSV writing
+├── visualize.py # Visualization script for results
+├── add_missing_data.py # Interpolation for missing frames
+├── requirements.txt # Python dependencies
+├── .gitignore # Git ignore rules
+├── models/ # Directory for model files
+├── sort/ # SORT tracking algorithm
+└── README.md # Project documentation
 
+text
 
 ## 🛠️ Installation
 
@@ -217,16 +212,10 @@ Jaided AI for EasyOCR
 Computer Vision Engineer for the original tutorial and license plate model
 
 📞 Contact
-Raj Gupta :-
-Linkedin - https://www.linkedin.com/in/raj-gupta-52b39230a/
-Email - guptaaraj007@gmail.com
+Raj Gupta - GitHub
+
 Project Link: https://github.com/GuptaRaj007/automatic-number-plate-recognition-python-yolov8
 
 Note: This project is intended for educational and research purposes. Please ensure compliance with local laws and regulations when using ANPR systems.
-
-
-
-
-
 
 
