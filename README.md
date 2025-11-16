@@ -261,4 +261,3 @@ Please respect the original licenses of:
 
 ---
 
-If you want, I can **polish it even more**, add **badges**, **GIF demo**, or convert it into a **professional portfolio-style README**.
