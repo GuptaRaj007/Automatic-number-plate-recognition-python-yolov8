@@ -17,6 +17,7 @@ A robust Automatic Number Plate Recognition (ANPR) system that detects vehicles,
 - **Visualization**: Generates annotated video with bounding boxes and text
 
 automatic-number-plate-recognition-python-yolov8/
+|
 │
 ├── main.py                      # Main detection and tracking script
 ├── util.py                      # OCR utilities and helper functions
@@ -222,6 +223,7 @@ Email - guptaaraj007@gmail.com
 Project Link: https://github.com/GuptaRaj007/automatic-number-plate-recognition-python-yolov8
 
 Note: This project is intended for educational and research purposes. Please ensure compliance with local laws and regulations when using ANPR systems.
+
 
 
 
