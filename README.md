@@ -5,217 +5,260 @@
 ![YOLOv8](https://img.shields.io/badge/YOLO-v8-orange)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.7-red)
 
-A robust Automatic Number Plate Recognition (ANPR) system that detects vehicles, tracks them across frames, and recognizes license plate text using YOLOv8 for detection and EasyOCR for text recognition.
+A complete Automatic Number Plate Recognition (ANPR) system that detects vehicles, tracks them across frames, extracts license plates, and recognizes text using YOLOv8 and EasyOCR.
+
+---
 
 ## 🚀 Features
 
-- **Vehicle Detection**: Uses YOLOv8 pre-trained model to detect vehicles
-- **License Plate Detection**: Custom YOLOv8 model for accurate license plate detection
-- **Vehicle Tracking**: SORT algorithm for tracking vehicles across frames
-- **Text Recognition**: EasyOCR for license plate text recognition
-- **Data Interpolation**: Handles missing frames with interpolation
-- **Visualization**: Generates annotated video with bounding boxes and text
+* **Vehicle Detection** using YOLOv8
+* **License Plate Detection** using a custom-trained YOLOv8 model
+* **Vehicle Tracking** with the SORT algorithm
+* **OCR Recognition** with EasyOCR
+* **Interpolation** for missing frames
+* **Visualization** to generate annotated result videos
+
+---
 
 ## 📁 Project Structure
-automatic-number-plate-recognition-python-yolov8/
-├── main.py # Main detection and tracking script
-├── util.py # Utility functions for OCR and CSV writing
-├── visualize.py # Visualization script for results
-├── add_missing_data.py # Interpolation for missing frames
-├── requirements.txt # Python dependencies
-├── .gitignore # Git ignore rules
-├── models/ # Directory for model files
-├── sort/ # SORT tracking algorithm
-└── README.md # Project documentation
 
-text
+```
+automatic-number-plate-recognition-python-yolov8/
+│
+├── main.py                      # Main detection and tracking
+├── util.py                      # OCR and utility functions
+├── visualize.py                 # Results visualization
+├── add_missing_data.py          # Frame interpolation
+├── requirements.txt             # Python dependencies
+├── README.md                    # Documentation
+│
+├── models/                      # Model files (place here)
+│   ├── license_plate_detector.pt
+│   └── yolov8n.pt
+│
+└── sort/                        # SORT tracker
+    ├── sort.py
+    └── __init__.py
+```
+
+---
 
 ## 🛠️ Installation
 
-### Prerequisites
+### **Prerequisites**
 
-- Python 3.8 or higher
-- Git
+* Python 3.8+
+* Git
 
-### Step-by-Step Setup
+---
 
-1. **Clone the repository**
+### **1. Clone the repository**
+
 ```bash
 git clone https://github.com/GuptaRaj007/automatic-number-plate-recognition-python-yolov8.git
 cd automatic-number-plate-recognition-python-yolov8
-Create virtual environment (Recommended)
+```
 
-bash
+---
+
+### **2. Create a virtual environment (recommended)**
+
+```bash
 python -m venv myenv
-# Windows
+```
+
+Activate it:
+
+**Windows**
+
+```bash
 myenv\Scripts\activate
-# macOS/Linux
+```
+
+**macOS/Linux**
+
+```bash
 source myenv/bin/activate
-Install dependencies
+```
 
-bash
+---
+
+### **3. Install dependencies**
+
+```bash
 pip install -r requirements.txt
-Setup SORT tracker
+```
 
-bash
-# The sort directory is already included in this repository
-# No additional setup required
-Download Model Files
+---
 
-Download yolov8n.pt from Ultralytics YOLOv8
+### **4. Set up model files**
 
-Download license_plate_detector.pt from the original author's Patreon
+* Download **yolov8n.pt** from Ultralytics
+* Download **license_plate_detector.pt**
+* Place both inside the **models/** folder.
 
-Place both model files in the models/ directory
+No setup is needed for SORT — it's included.
 
-🎯 Usage
-1. Run Detection and Tracking
-bash
+---
+
+## 🎯 Usage
+
+### **1. Run detection & tracking**
+
+```bash
 python main.py
+```
+
 This will:
 
-Process the video frame by frame
+* Read video input
+* Detect vehicles
+* Detect license plates
+* Track vehicles
+* Run OCR
+* Save results to **test.csv**
 
-Detect vehicles and license plates
+---
 
-Track vehicles across frames
+### **2. Interpolate missing data**
 
-Recognize license plate text
-
-Generate test.csv with results
-
-2. Interpolate Missing Data
-bash
+```bash
 python add_missing_data.py
-This fills in missing frames using interpolation and generates test_interpolated.csv
+```
 
-3. Visualize Results
-bash
+Generates:
+
+* `test_interpolated.csv`
+
+---
+
+### **3. Visualize results**
+
+```bash
 python visualize.py
-Creates out.mp4 - an annotated video with:
+```
 
-Green bordered boxes around vehicles
+Produces:
 
-Red rectangles around license plates
+* `out.mp4` (annotated video with bounding boxes & text)
 
-License plate crops displayed above vehicles
+---
 
-Recognized license plate text
+## 📊 Output Files
 
-📊 Output Files
-test.csv - Raw detection results
+| File                      | Description                 |
+| ------------------------- | --------------------------- |
+| **test.csv**              | Raw detection results       |
+| **test_interpolated.csv** | After interpolation         |
+| **out.mp4**               | Final rendered output video |
 
-test_interpolated.csv - Results with interpolated frames
+---
 
-out.mp4 - Visualized output video with annotations
+## 🔧 Configuration
 
-🔧 Configuration
-Video Input
-Update the video path in main.py:
+### **Video Input**
 
-python
+Edit in `main.py`:
+
+```python
 cap = cv2.VideoCapture('your_video.mp4')
-Vehicle Classes
-Modify vehicle classes in main.py:
+```
 
-python
-vehicles = [2, 3, 5, 7]  # COCO dataset classes: car, motorcycle, bus, truck
-🛠️ Dependencies
-ultralytics==8.0.114 - YOLOv8 for object detection
+### **Vehicle Classes**
 
-opencv-python==4.7.0.72 - Computer vision operations
+```python
+vehicles = [2, 3, 5, 7]   # car, motorcycle, bus, truck
+```
 
-pandas==2.0.2 - Data manipulation
+---
 
-numpy==1.24.3 - Numerical operations
+## 🛠️ Dependencies
 
-easyocr==1.7.0 - Text recognition
+* `ultralytics==8.0.114`
+* `opencv-python==4.7.0.72`
+* `pandas==2.0.2`
+* `numpy==1.24.3`
+* `easyocr==1.7.0`
+* `scipy==1.10.1`
+* `filterpy==1.4.5`
 
-scipy==1.10.1 - Scientific computing
+---
 
-filterpy==1.4.5 - Kalman filters for tracking
+## 🎥 Sample Video
 
-🎥 Sample Video
-The sample video used in this project can be downloaded from Pexels.
+You can download sample vehicle footage from **Pexels** to test the pipeline.
 
-🔍 How It Works
-Vehicle Detection: YOLOv8 detects vehicles in each frame
+---
 
-Tracking: SORT algorithm tracks vehicles across frames
+## 🔍 How It Works
 
-License Plate Detection: Custom YOLOv8 model detects license plates
+1. **YOLOv8 detects vehicles**
+2. **SORT tracks vehicles frame-to-frame**
+3. **YOLOv8 detects license plates**
+4. **EasyOCR extracts plate characters**
+5. **Plates are linked to tracked vehicles**
+6. **Missing entries are interpolated**
+7. **Final video is rendered with annotations**
 
-Text Recognition: EasyOCR reads text from detected license plates
+---
 
-Data Association: License plates are associated with corresponding vehicles
+## 🐛 Troubleshooting
 
-Interpolation: Missing data is filled using linear interpolation
+### **Memory Issues**
 
-Visualization: Results are overlaid on the original video
+* Lower the input video resolution
+* Use shorter clips during testing
 
-🐛 Troubleshooting
-Common Issues
-Memory Error:
+### **Model Not Found**
 
-Reduce video resolution
+* Ensure `.pt` files are inside `/models`
 
-Process shorter video segments
+### **Video Output Not Playing**
 
-Model Not Found:
+* Use VLC Media Player
+* Ensure processing completed without errors
 
-Ensure model files are in models/ directory
+### **Performance Tips**
 
-Check file names match the code
+* Use a GPU-enabled machine
+* Reduce video resolution
+* Process smaller video segments for testing
 
-Video Not Playing:
+---
 
-Use VLC Media Player for best compatibility
+## 🤝 Contributing
 
-Check if output file was created successfully
+Contributions are welcome!
 
-Performance Tips
-Use GPU for faster processing (install CUDA-enabled PyTorch)
+---
 
-Reduce video resolution for faster processing
+## 📝 License
 
-Process shorter video segments for testing
+This project is for educational use.
+Please respect the original licenses of:
 
-🤝 Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
+* YOLOv8 — AGPL-3.0
+* SORT — MIT
+* EasyOCR — Apache 2.0
 
-Fork the project
+---
 
-Create your feature branch (git checkout -b feature/AmazingFeature)
+## 🙏 Acknowledgments
 
-Commit your changes (git commit -m 'Add some AmazingFeature')
+* Ultralytics (YOLOv8)
+* abewley (SORT)
+* Jaided AI (EasyOCR)
 
-Push to the branch (git push origin feature/AmazingFeature)
+---
 
-Open a Pull Request
+## 📞 Contact
 
-📝 License
-This project is for educational purposes. Please respect the licenses of the included components:
+**Raj Gupta**
 
-YOLOv8: AGPL-3.0
+* **LinkedIn:** [https://www.linkedin.com/in/raj-gupta-52b39230a/](https://www.linkedin.com/in/raj-gupta-52b39230a/)
+* **Email:** [guptaaraj007@gmail.com](mailto:guptaaraj007@gmail.com)
+* **Project Link:** [https://github.com/GuptaRaj007/automatic-number-plate-recognition-python-yolov8](https://github.com/GuptaRaj007/automatic-number-plate-recognition-python-yolov8)
 
-SORT: MIT
+---
 
-EasyOCR: Apache 2.0
-
-🙏 Acknowledgments
-Ultralytics for YOLOv8
-
-abewley for SORT tracker
-
-Jaided AI for EasyOCR
-
-Computer Vision Engineer for the original tutorial and license plate model
-
-📞 Contact
-Raj Gupta - GitHub
-
-Project Link: https://github.com/GuptaRaj007/automatic-number-plate-recognition-python-yolov8
-
-Note: This project is intended for educational and research purposes. Please ensure compliance with local laws and regulations when using ANPR systems.
-
-
+If you want, I can **polish it even more**, add **badges**, **GIF demo**, or convert it into a **professional portfolio-style README**.
