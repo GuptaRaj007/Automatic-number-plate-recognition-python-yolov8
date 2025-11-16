@@ -212,10 +212,12 @@ Jaided AI for EasyOCR
 Computer Vision Engineer for the original tutorial and license plate model
 
 📞 Contact
-Raj Gupta - GitHub
-
+Raj Gupta :-
+Linkedin - https://www.linkedin.com/in/raj-gupta-52b39230a/
+Email - guptaaraj007@gmail.com
 Project Link: https://github.com/GuptaRaj007/automatic-number-plate-recognition-python-yolov8
 
 Note: This project is intended for educational and research purposes. Please ensure compliance with local laws and regulations when using ANPR systems.
+
 
 
