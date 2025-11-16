@@ -1,0 +1,27 @@
+# Virtual environment
+myenv/
+__pycache__/
+*.pyc
+
+# Large files
+*.pt
+*.mp4
+*.avi
+
+# Dataset files
+test.csv
+test_interpolated.csv
+out.mp4
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Model files (if they're large)
+models/license_plate_detector.pt
